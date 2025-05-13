@@ -1,0 +1,120 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Wheels Application</display-name>
+
+    <!-- Admin Servlets -->
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ParcsServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.ParcsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UnitsServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.UnitsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingsServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.BookingsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DriversServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.DriversServlet</servlet-class>
+    </servlet>
+
+    <!-- Admin Servlet Mappings -->
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ParcsServlet</servlet-name>
+        <url-pattern>/admin/parcs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnitsServlet</servlet-name>
+        <url-pattern>/admin/units</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingsServlet</servlet-name>
+        <url-pattern>/admin/bookings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DriversServlet</servlet-name>
+        <url-pattern>/admin/drivers</url-pattern>
+    </servlet-mapping>
+
+    <!-- Public/User Servlets -->
+    <servlet>
+        <servlet-name>CarBrowseServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.CarBrowseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.BookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserBookingServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.UserBookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.AuthServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DriverServlet</servlet-name>
+        <servlet-class>com.wheels.controller.user.DriverServlet</servlet-class>
+    </servlet>
+
+    <!-- Public/User Servlet Mappings -->
+    <servlet-mapping>
+        <servlet-name>CarBrowseServlet</servlet-name>
+        <url-pattern>/browse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserBookingServlet</servlet-name>
+        <url-pattern>/my-bookings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DriverServlet</servlet-name>
+        <url-pattern>/driver</url-pattern>
+    </servlet-mapping>
+
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>user/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Security Constraint (Optional, to be expanded later) -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin Pages</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+</web-app>
