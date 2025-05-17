@@ -554,7 +554,7 @@ public class DBUtil {
 
     public static List<Map<String, Object>> getAvailableCars() {
         List<Map<String, Object>> cars = new ArrayList<>();
-        String sql = "SELECT car_id, brand, model FROM cars WHERE availability = TRUE";
+        String sql = "SELECT car_id, brand, model, car_type, price_per_day, image_url FROM cars WHERE availability = TRUE";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -562,6 +562,9 @@ public class DBUtil {
                 Map<String, Object> car = new HashMap<>();
                 car.put("car_id", rs.getInt("car_id"));
                 car.put("car_model", rs.getString("brand") + " " + rs.getString("model"));
+                car.put("car_type", rs.getString("car_type"));
+                car.put("price_per_day", rs.getBigDecimal("price_per_day"));
+                car.put("image_url", rs.getString("image_url"));
                 cars.add(car);
             }
         } catch (SQLException e) {
@@ -569,7 +572,6 @@ public class DBUtil {
         }
         return cars;
     }
-
     public static List<Map<String, Object>> getClients() {
         List<Map<String, Object>> clients = new ArrayList<>();
         String sql = "SELECT user_id, full_name FROM users WHERE role = 'client'";
@@ -1377,4 +1379,6 @@ public class DBUtil {
         }
 
         return bookings;
-    }}
+    }
+
+}

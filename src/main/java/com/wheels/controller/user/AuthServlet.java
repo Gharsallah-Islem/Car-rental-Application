@@ -61,7 +61,22 @@ public class AuthServlet extends HttpServlet {
                         session.setAttribute("userId", rs.getInt("user_id"));
                         session.setAttribute("role", rs.getString("role"));
                         session.setAttribute("username", rs.getString("username"));
-                        response.sendRedirect(request.getContextPath() + "/browse");
+
+                        String role = rs.getString("role");
+                        String redirectUrl;
+                        switch (role) {
+                            case "admin":
+                                redirectUrl = request.getContextPath() + "/admin/dashboard";
+                                break;
+                            case "driver":
+                                redirectUrl = request.getContextPath() + "/driver";
+                                break;
+                            case "client":
+                            default:
+                                redirectUrl = request.getContextPath() + "/browse";
+                                break;
+                        }
+                        response.sendRedirect(redirectUrl);
                     } else {
                         request.setAttribute("error", "Invalid identifier or password");
                         request.getRequestDispatcher("/user/login.jsp").forward(request, response);

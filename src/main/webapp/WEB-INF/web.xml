@@ -26,6 +26,26 @@
         <servlet-name>DriversServlet</servlet-name>
         <servlet-class>com.wheels.controller.admin.DriversServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalendarServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.CalendarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientsServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.ClientsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinancialsServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.FinancialsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrackingServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.TrackingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MessagesServlet</servlet-name>
+        <servlet-class>com.wheels.controller.admin.MessagesServlet</servlet-class>
+    </servlet>
 
     <!-- Admin Servlet Mappings -->
     <servlet-mapping>
@@ -47,6 +67,26 @@
     <servlet-mapping>
         <servlet-name>DriversServlet</servlet-name>
         <url-pattern>/admin/drivers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalendarServlet</servlet-name>
+        <url-pattern>/admin/calendar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientsServlet</servlet-name>
+        <url-pattern>/admin/clients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinancialsServlet</servlet-name>
+        <url-pattern>/admin/financials</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrackingServlet</servlet-name>
+        <url-pattern>/admin/tracking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessagesServlet</servlet-name>
+        <url-pattern>/admin/messages</url-pattern>
     </servlet-mapping>
 
     <!-- Public/User Servlets -->
@@ -81,6 +121,14 @@
         <url-pattern>/browse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CarBrowseServlet</servlet-name>
+        <url-pattern>/featured</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarBrowseServlet</servlet-name>
+        <url-pattern>/car-details</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>BookingServlet</servlet-name>
         <url-pattern>/book</url-pattern>
     </servlet-mapping>
@@ -106,15 +154,15 @@
         <welcome-file>user/index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Security Constraint (Optional, to be expanded later) -->
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Admin Pages</web-resource-name>
-            <url-pattern>/admin/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-        </auth-constraint>
-    </security-constraint>
+    <!-- Declare Security Roles -->
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <role-name>driver</role-name>
+    </security-role>
+    <security-role>
+        <role-name>client</role-name>
+    </security-role>
 
 </web-app>
